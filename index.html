@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, initial-scale=1.0" />
+  <title>2025 Portfolio - 김민서</title>
+  <!-- 구글웹폰트 불러오기 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-image: url('0731.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      background-attachment: scroll;
+      min-width: 1920px;
+      min-height: 4320px;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    nav {
+  display: flex;
+  flex-direction: column;         /* 세로 방향 배치 */
+  align-items: flex-end;          /* 오른쪽 정렬 */
+  position: fixed;
+  top: 50%;
+  right: 60px;
+  transform: translateY(-50%);
+  text-align: left;
+  z-index: 1000;
+}
+
+
+.nav-indicator {
+  position: absolute;
+  left: 75px;              /* nav 바 왼쪽에 붙음 */
+  top: 48%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  z-index: 1001;
+}
+
+.indicator-dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0.4;
+  transition: all 0.2s;
+  box-shadow: 0 1px 8px #113d1e55;
+}
+
+.indicator-dot.active {
+  background-color: #ffffff; /* 현재 위치 강조 색상 */
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 18px #a8ffba;
+}
+
+  
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 12px;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #b2ffb1; }
+    section {
+      width: 100%;
+      min-height: 1080px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top:;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+    }
+    .main {
+      height: 1080px;
+      min-height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      background: none;
+      padding-top: 350px;
+    }
+
+    .main {
+  position: relative;
+  overflow: hidden;
+  /* 기존 스타일 유지 */
+}
+.main-floating-btn {
+  position: fixed;
+  top: 34px;             /* 화면 맨 위에서 34px 아래 */
+  left: 34px;            /* 왼쪽에서 34px 안쪽 */
+  z-index: 2001;         /* 네비 등 위에 보임 */
+  
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 34px;
+  border-radius: 31px;
+  box-shadow: 0 2px 16px #113d1e33;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.15s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.main-floating-btn:hover, .main-floating-btn:focus {
+  color: rgb(255, 255, 255);
+  box-shadow: 0 6px 22px black;
+}
+
+/* 배경 영상 꽉채우기 */
+.main-bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* 화면 꽉 채우기 */
+  object-position: center -50px;  /* ↑ 영상의 보여지는 영역을 더 위로 끌어올림 */
+  z-index: 0;              /* 텍스트 뒤에 위치 */
+  
+}
+
+.main > *:not(.main-bg-video) {
+  position: relative;
+  z-index: 2;
+}
+
+    .main h1 {
+      font-size: 80px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 0.07em;
+      line-height: 1.1;
+      text-shadow: 0 3px 12px rgba(20,30,30,0.2);
+      
+    }
+    .bookman { font-family: 'Bookman Old Style', serif; font-size: 100px; }
+    .blur-text { filter: blur(2px);}
+    .main .year {
+      font-size: 22px;
+      color: #87b67c;
+      opacity: 0.95;
+      margin-right: 360px;
+
+    }
+    .main .desc {
+      font-size: 17px;
+      color: #ebffe3;
+      margin-top: 10px;
+      letter-spacing: -0.025em;
+      opacity: 0.85;
+      text-align: center;
+    }
+    .main .name {
+      font-weight: bold;
+      font-size: 20px;
+      color: #c0ffb8;
+    }
+    .main .scroll-down {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.7;
+    }
+    .profile-section {
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 24px 20px 24px;
+      min-height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 100px;
+      scroll-margin-top: -20px;
+    }
+    .profile-title { font-size: 38px; font-weight: 700; margin-bottom: 24px; color: white;}
+    .profile-flex {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+
+.profile-info {
+  position: relative;
+  z-index: 2;                   /* 텍스트가 이미지 위에 보이게 */
+  margin-top: 150px;
+}
+
+.profile-bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1080px;                /* 이미지 크기, 조절 가능 */
+  height: auto;
+  object-fit: cover;
+  border-radius: 17px;
+  box-shadow: 0 4px 14px #0004; /* 드랍쉐도우, 필요 없으면 삭제 */
+  z-index: 1;                   /* 텍스트보다 아래 */
+  pointer-events: none;         /* 이미지 위 클릭시 텍스트만 인식됨 */
+}
+
+    .profile-info h2 { font-size: 29px; margin: 0 0 4px 0; color: #fff; letter-spacing: 0.03em;}
+    .profile-info-subtitle { font-size: 20px; margin: 21px 0 4px; color: #fff; font-weight: bold;}
+    .profile-info ul { list-style: none; padding: 0; margin: 9px 0 30px 0; }
+    .profile-info ul li { color: #fff; }
+    .profile-tools {
+      flex-basis: 33%;
+      background: #13391f;
+      border-radius: 17px;
+      padding: 24px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-tools-icons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .profile-tools-icons img {
+      width: 39px;
+      border-radius: 7px;
+      background: #093013;
+      padding: 6px;
+      box-shadow: 0 1px 8px #223;
+    }
+    .cube-demo {
+      width: 90px; height: 90px;
+      background: #293f30;
+      border-radius: 11px;
+      margin: 0 auto 8px auto;
+      box-shadow: 3px 4px 18px #0006 inset;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 50px;
+    }
+    /* 프로젝트 슬라이드 스타일 */
+    input[type="radio"] { display: none; }
+    #button {
+      width: 1000px;
+      height: 150px;
+      border: black;
+      margin-bottom: 10px;
+      overflow: hidden;
+      padding-left: 10px;
+      box-sizing: border-box;
+    }
+    .thumbnail img {
+  border-radius: 18px;
+}
+    .thumbnail {
+      margin-left: 15px;
+      margin-top: 10px;
+      width: 220px;
+      height: 125px;
+      display: block;
+      float: left;
+      cursor: pointer;
+    }
+    #frame {
+      width: 1000px;
+      height: 600px;
+      border: 2px black;
+      margin: 10px auto;
+      
+      box-sizing: border-box;
+      
+    }
+    #slide {
+      width: 4100px; /* 1000*4+여백 */
+      height: 700px;
+      transition-duration: 1s;
+      display: flex;
+    }
+    #conta, #contb, #contc, #contd {
+      width: 1000px;
+      height: 550px;
+      padding-left: 0px;
+      box-sizing: border-box;
+      display: block;
+      margin: 20px auto 10px auto; /* 위쪽0, 좌우 자동, 아래 10px */
+      box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);  /* 각 프로젝트 박스별 그림자 */
+  border-radius: 17px;
+  margin-top: 20px;       /* 필요에 따라 여백 조정 */
+  padding-top: 36px;
+  /* background-color: #fff;  원하는 경우만 배경색 지정 */
+     
+    }
+    #conta span,
+    #conta p {
+  padding-left: 140px;
+  display: block;
+}
+#contb span,
+    #contb p {
+  padding-left: 140px;
+  display: block;
+}
+#contc span,
+    #contc p {
+  padding-left: 140px;
+  display: block;
+}
+#contd span,
+    #contd p {
+  padding-left: 140px;
+  display: block;
+}
+
+    .video {
+      display: block;
+      
+      max-width: 100%;
+      margin: 0 auto 20px auto;
+      border-radius: 18px;
+      
+
+    }
+    span {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+    #inputa:checked ~ #frame > #slide {margin-left:   0; }
+    #inputb:checked ~ #frame > #slide {margin-left: -1020px; }
+    #inputc:checked ~ #frame > #slide {margin-left: -2040px; }
+    #inputd:checked ~ #frame > #slide {margin-left: -3060px; }
+    #inputa:checked ~ #button > #labela,
+    #inputb:checked ~ #button > #labelb,
+    #inputc:checked ~ #button > #labelc,
+    #inputd:checked ~ #button > #labeld {
+      border: 5px solid #fff;
+      width: 223px;
+      height: 130px;
+      box-sizing: border-box;
+      border-radius: 25px;
+    }
+    .project-section {
+      min-height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 80px;
+      scroll-margin-top: 40px;
+    }
+    
+    .contact-section {
+      max-width: 100vw;
+      margin: 0 auto;
+      padding: 0;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 1080px;
+      height: 1080px;
+      scroll-margin-top: 20px;
+    }
+    .contact-section h2 {
+      font-size: 100px;
+      font-weight: 900;
+      color: #fdfdfd;
+      margin-bottom: 34px;
+      margin-top: 0;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 8px #11331b55;
+    }
+    .contact-section .contact-info {
+      margin-top: 45px;
+      font-size: 24px;
+      color: #f4ffe6;
+      text-align: center;
+      line-height: 2.1;
+    }
+    .contact-section .contact-info strong {
+      display: block;
+      color: #c5ffd6;
+      margin-bottom: 9px;
+      font-size: 22px;
+    }
+    .contact-section .contact-info span {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 25px;
+    }
+
+    /* 반응형 일부 */
+    @media (max-width: 1200px) {
+      body { min-width: 960px;}
+      section { max-width: 98vw; }
+      nav { right: 16px;}
+    }
+    @media (max-width: 900px) {
+      .profile-flex { flex-direction: column;}
+      .profile-tools, .profile-info { flex-basis: 100%; }
+      body { min-width: 100vw;}
+      section, .main, .profile-section, .project-section, .contact-section { min-height: 700px; height: 700px;}
+      #button, #frame { width: 96vw; }
+      #conta, #contb, #contc, #contd { width: 96vw; }
+      #slide { width: 384vw;}
+    }
+
+    a {color: #ffffff;}
+    .floating-shapes {
+  position: absolute;
+  left: 30vw;
+  top: 22vh;
+  width: 500px;
+  height: 320px;
+  pointer-events: none;  /* 클릭 방지, 데코용 */
+  z-index: 5;
+}
+
+.float-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: floatAnim 3s infinite alternate ease-in-out;
+  filter: blur(5px);
+  margin-left: -120px;
+ 
+}
+
+.circle1 {
+  width: 120px; height: 120px;
+  background: #79d472;
+  left: 0px; top: 20px;
+  animation-delay: 0s;
+}
+.circle2 {
+  width: 70px; height: 70px;
+  background: #ddf6e7;
+  left: 140px; top: 120px;
+  animation-delay: .6s;
+}
+.circle3 {
+  width: 48px; height: 48px;
+  background: #2224;
+  left: 240px; top: 60px;
+  animation-delay: 1.2s;
+  
+}
+
+@keyframes floatAnim {
+  0%   { transform: translateY(0);}
+  100% { transform: translateY(-38px);}
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+.scroll-down {
+  position: fixed;
+  left: 50%;
+  bottom: 44px;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2002;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(.42,0,.53,1.02);
+}
+
+
+.scroll-down img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  animation: mouseMove 1.3s infinite alternate;
+}
+
+@keyframes mouseMove {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(15px);}
+}
+
+.scroll-down .scroll-text {
+  color: #fff;
+  font-size: 17px;
+  margin-top: 7px;      /* 마우스아이콘과 텍스트 간격 */
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+
+@keyframes mouseMove {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(15px);}
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 5000;
+  padding-top: 100px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  text-align: center;
+}
+
+.modal-slide-container {
+  position: relative;
+  max-width: 90%;
+  height: 80vh;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.modal-slide-container img {
+  max-height: 80vh;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+  display: none;
+  margin: 0 auto;
+}
+
+#caption {
+  margin: 12px auto;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover { color: #ff8080; }
+
+.modal-prev,
+.modal-next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 12px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: rgba(0,0,0,0.3);
+  border: none;
+  border-radius: 3px;
+  user-select: none;
+  transition: background-color 0.2s;
+  z-index: 6000;
+}
+.modal-prev:hover,
+.modal-next:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+.modal-prev { left: 10px; }
+.modal-next { right: 10px; }
+
+.storyboard-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  border: 2px solid #4caf50;
+  background-color: #2e7d32; /* 어두운 녹색 배경 */
+  color: #e0f2f1;             /* 부드러운 연한 텍스트 색 */
+  cursor: pointer;
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    box-shadow 0.3s ease, 
+    transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.4);
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  user-select: none;
+}
+
+.storyboard-btn:hover,
+.storyboard-btn:focus {
+  background-color: #66bb6a; /* 밝은 녹색으로 호버 */
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(102, 187, 106, 0.7);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.storyboard-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.3);
+}
+
+.storyboard-btn:focus-visible {
+  outline: 3px solid #a5d6a7; /* 포커스 시 뚜렷한 윤곽선 */
+}
+.project-title {
+  display: flex;
+  align-items: center;   /* 세로 중앙 정렬 */
+  gap: 14px;             /* 제목과 버튼 사이 간격 */
+    /* 기존 제목 왼쪽 여백 유지 */
+}
+
+.title-a { padding-left: 80px; }
+.title-b { padding-left: 180px; }
+.title-c { padding-left: 100px; }
+.title-d { padding-left: 140px; }
+.project-title span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;   /* 줄바꿈 방지 */
+}
+
+.storyboard-btn {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  border: 2px solid #4caf50;
+  background-color: #2e7d32;
+  color: #e0f2f1;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.4);
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.storyboard-btn:hover,
+.storyboard-btn:focus {
+  background-color: #66bb6a;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(102, 187, 106, 0.7);
+  transform: translateY(-2px);
+}
+
+.storyboard-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.3);
+}
+
+.storyboard-btn:focus-visible {
+  outline: 3px solid #a5d6a7;
+}
+
+  </style>
+</head>
+
+
+
+
+
+
+
+
+<body>
+  
+  
+
+  <div class="scroll-down">
+    <img src="mouse.png" alt="스크롤 안내" width="40"/>
+    <span style="color:#fff; font-size:17px;">Scroll Down</span>
+  </div>
+
+  
+  
+  <a href="#main" class="main-floating-btn">MS's Portfolio</a>
+
+  <div class="floating-shapes">
+    <div class="float-circle circle1"></div>
+    <div class="float-circle circle2"></div>
+    <div class="float-circle circle3"></div>
+  </div>
+  
+
+  <nav>
+    <div class="nav-indicator">
+      <span data-target="main" class="indicator-dot active"></span>
+      <span data-target="Project" class="indicator-dot"></span>
+      <span data-target="profile" class="indicator-dot"></span>
+      <span data-target="contact" class="indicator-dot"></span>
+    </div>
+    <a href="#main">Main</a>
+    <a href="#project">Project</a>
+    <a href="#profile">Profile</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  
+
+  <section class="main" id="main">
+    <video class="main-bg-video" src="배경영상1.mp4" autoplay muted loop playsinline></video>  
+    <div class="main-centerbox">
+      <span class="year">2025</span>
+      <h1><span class="bookman blur-text">Portfolio</span></h1>
+    </div>
+    <div class="desc">
+      작은 발상 하나도 다르게, 트렌드와 창의력 사이를 자유롭게 넘나드는 <span class="name">김민서</span> 입니다
+    </div>
+    
+  </section>
+  
+
+ 
+  
+
+  <!-- Project 섹션: 썸네일 비디오 슬라이드 -->
+  <section class="project-section" id="project">
+   <!-- 모달 팝업: 이미지 슬라이드 구조 -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+
+  <div class="modal-slide-container">
+    <!-- 슬라이드 이미지들이 여기에 동적으로 추가됩니다 -->
+  </div>
+
+  <!-- 좌우 이동 버튼 -->
+  <button class="modal-prev">&#10094;</button>
+  <button class="modal-next">&#10095;</button>
+
+  <div id="caption"></div>
+</div>
+
+    <div class="profile-title">Project</div>
+
+    <input id="inputa" type="radio" name="jadff" onchange="pause()" checked>
+    <input id="inputb" type="radio" name="jadff" onchange="pause()">
+    <input id="inputc" type="radio" name="jadff" onchange="pause()">
+    <input id="inputd" type="radio" name="jadff" onchange="pause()">
+
+    <div id="button">
+      <label id="labela" for="inputa" class="thumbnail"><img src="01.png" height="100%" alt="썸네일1"></label>
+      <label id="labelb" for="inputb" class="thumbnail"><img src="02.jpg" height="100%" alt="썸네일2"></label>
+      <label id="labelc" for="inputc" class="thumbnail"><img src="03.jpg" height="100%" alt="썸네일3"></label>
+      <label id="labeld" for="inputd" class="thumbnail"><img src="04.jpg" height="100%" alt="썸네일4"></label>
+    </div>
+
+    <div id="frame">a
+      <div id="slide">
+  
+  <div id="conta">
+  <video class="video" src="01.png" poster="01.png" controls width="700px"></video>
+  <div class="project-title title-a">
+    <span>Dyson Supersonic Nova (40s)</span>
+    <button class="storyboard-btn" onclick="window.open('https://drive.google.com/file/d/1-baNrSvq1A3CrcpqeNaRe7fJrBDJJ9Xy/view?usp=drive_link', '_blank')">
+      PLAY
+    </button>    
+    <button class="storyboard-btn" data-img="Dyson1.png,Dyson2.png,Dyson3.png">스토리보드</button>
+  </div>
+</div>
+
+<div id="contb">
+  <video class="video" src="02.jpg" poster="02.jpg" controls width="700px"></video>
+  <div class="project-title title-b">
+    <span>펫프렌즈 광고 (1m)</span>
+    <button class="storyboard-btn" onclick="window.open('https://drive.google.com/file/d/1ICOwtAy-PIon5GKRzUoxRyuH2hZBJk3U/view?usp=drive_link', '_blank')">
+      PLAY
+    </button>
+    <button class="storyboard-btn" data-img="표지.png,t.png,a.png,aa.png,p1.png,p2.png,p3.png,p4.png,p5.png,p6.png,p7.png">스토리보드</button>
+  </div>
+</div>
+
+<div id="contc">
+  <video class="video" src="03.jpg" poster="03.jpg" controls width="700px"></video>
+  <div class="project-title title-c">
+    <span>3D Home 아이소메트릭 (57s)</span>
+    <button class="storyboard-btn" onclick="window.open('https://drive.google.com/file/d/1QOw6D0CVzk_SunokX_lRCd2ivupNsIBG/view?usp=drive_link', '_blank')">
+      PLAY
+    </button>
+    <button class="storyboard-btn" data-img="storyboard3.jpg">스토리보드</button>
+  </div>
+</div>
+
+<div id="contd">
+  <video class="video" src="04.jpg" poster="04.jpg" controls width="700px"></video>
+  <div class="project-title title-d">
+    <span>GIF 튜토리얼 (2m 36s)</span>
+    <button class="storyboard-btn" onclick="window.open('https://drive.google.com/file/d/1Kghk9kS4uyqURIfeKNpIHGXsIQAY8w-5/view?usp=drive_link', '_blank')">
+      PLAY
+    </button>
+    <button class="storyboard-btn" data-img="GIF1.png,GIF2.png">스토리보드</button>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="profile-section" id="profile">
+    <div class="profile-title">Profile</div>
+    <div class="profile-flex">
+      <div class="profile-info">
+        <h2>김민서 <span style="font-size:16px;font-weight:normal;opacity:0.8;">KIM Minseo (2002)</span></h2>
+        <div class="profile-info-subtitle">Education</div>
+        <ul>
+          <li>2025.03~2025.09 그린컴퓨터학원 멀티미디어 영상편집반 수료</li>
+          <li>2021~2024 동양미래대학교 유통마케팅학과 졸업</li>
+        </ul>
+        <div class="profile-info-subtitle">License</div>
+        <ul>
+          <li>2025 GTQ 1급</li>
+          <li>2024 운전면허 2종 보통</li>
+          <li>2023 유통관리사</li>
+          <li>2013 주산암산 3급 </li>
+        </ul>
+        
+      </div>
+      <img class="profile-bg-img" src="0728.png" alt="프로필 이미지">
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Thank You :)</h2>
+    <div class="contact-info">
+      <strong>Contact</strong>
+      <span>E-Mail: huanj@naver.com</span>
+      <span>Phone: 010-8411-3472</span>
+    </div>
+  </section>
+
+
+  
+  <script>
+    
+
+    function pause() {
+      const videos = document.querySelectorAll('.video');
+      videos.forEach(video => video.pause());
+    }
+  // 스크롤
+  let sectionHeight = 1100;
+  let isScrolling = false;
+  window.addEventListener('wheel', function(e) {
+    if (isScrolling) return;
+    e.preventDefault();
+    let direction = (e.deltaY > 0 || e.wheelDelta < 0) ? 1 : -1;
+    let target = window.scrollY + (direction * sectionHeight);
+    target = Math.round(target / sectionHeight) * sectionHeight;
+    target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
+    isScrolling = true;
+    window.scrollTo({
+      top: target,
+      behavior: "smooth"
+    });
+    setTimeout(function(){ isScrolling = false; }, 600);
+  }, { passive: false });
+  const sections = ['main','profile','project','contact'];
+
+function setActiveIndicator() {
+  const scrollY = window.scrollY + window.innerHeight/2;
+  let activeIndex = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop - 200 < scrollY) activeIndex = i;
+  });
+  document.querySelectorAll('.indicator-dot').forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === activeIndex);
+  });
+}
+window.addEventListener('scroll', setActiveIndicator);
+window.addEventListener('DOMContentLoaded', setActiveIndicator);
+
+  // 첫페이지 벗어나면 마우스 사라지게
+window.addEventListener('scroll', function() {
+  const scrollDown = document.querySelector('.scroll-down');
+  const mainSection = document.querySelector('.main');
+  if (!scrollDown || !mainSection) return;
+
+  // "화면 아래 절반 이상이 .main을 벗어나면" 감쇄
+  const mainRect = mainSection.getBoundingClientRect();
+  if (mainRect.bottom < window.innerHeight * 0.9) {
+    scrollDown.style.opacity = '0';
+  } else {
+    scrollDown.style.opacity = '1';
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("imageModal");
+  const slideContainer = modal.querySelector(".modal-slide-container");
+  const captionText = document.getElementById("caption");
+  const modalClose = modal.querySelector(".close");
+  const prevBtn = modal.querySelector(".modal-prev");
+  const nextBtn = modal.querySelector(".modal-next");
+
+  let slides = [];
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    else if (index >= slides.length) index = 0;
+    currentIndex = index;
+
+    slides.forEach((imgEl, i) => {
+      imgEl.style.display = (i === index) ? "block" : "none";
+    });
+  }
+
+  function openModal(imageUrls, caption) {
+    // 이미지 요소 초기화
+    slideContainer.innerHTML = "";
+    slides = [];
+
+    imageUrls.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src.trim();
+      img.classList.add("modal-slide");
+      slideContainer.appendChild(img);
+      slides.push(img);
+    });
+
+    captionText.innerText = caption || "";
+    currentIndex = 0;
+    showSlide(currentIndex);
+    modal.style.display = "block";
+  }
+
+  // 스토리보드 버튼 이벤트 연결
+  document.querySelectorAll(".storyboard-btn").forEach(button => {
+    button.addEventListener("click", function() {
+      const dataImg = this.getAttribute("data-img");
+      let imageUrls = dataImg.split(",");
+      const titleText = this.previousElementSibling.innerText;
+      openModal(imageUrls, titleText + " — 스토리보드");
+    });
+  });
+
+  // 닫기 버튼 클릭
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // 모달 배경 클릭 시 닫기
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  // 이전, 다음 버튼 클릭
+  prevBtn.addEventListener("click", () => {
+    showSlide(currentIndex - 1);
+  });
+  nextBtn.addEventListener("click", () => {
+    showSlide(currentIndex + 1);
+  });
+});
+
+
+  </script>
+
+ 
+
+</body>
+</html>
